@@ -2,14 +2,15 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+ const dotenv = require('dotenv').config()
  
 
 const app = express(); //inicializo express
 
-const port = 3900;
+const PORT = process.env.PORT || 3000;
 
 const mongoose = require('mongoose');
-var url = 'mongodb://127.0.0.1:27017/api_rest_reactnotas';
+//var url ='mongodb://127.0.0.1:27017/api_rest_reactnotas';
 
 mongoose.Promise = global.Promise;
 
@@ -37,11 +38,11 @@ app.use('/api', article_routes);
 mongoose.set('strictQuery', true);
 
 //conexion base de datos
-mongoose.connect(url,{useNewUrlParser: true}).then(()=>{
+mongoose.connect('mongodb://127.0.0.1:27017/api_rest_reactnotas',{useNewUrlParser: true}).then(()=>{
 console.log("Conexion realizada con exito");
 
-app.listen(port, () =>{
-    console.log('Lanzando la aplicacion en puerto ' + port);
+app.listen(PORT, () =>{
+    console.log('Lanzando la aplicacion en puerto ' + PORT);
     
     });
 });
