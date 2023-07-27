@@ -32,6 +32,9 @@ next();
 
 app.use('/api', article_routes);
 
+//cambio
+
+mongoose.set('strictQuery', true);
 
 //conexion base de datos
 mongoose.connect(url,{useNewUrlParser: true}).then(()=>{
