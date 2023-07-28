@@ -10,7 +10,7 @@ const app = express(); //inicializo express
 const PORT = process.env.PORT || 3000;
 
 const mongoose = require('mongoose');
-//var url ='mongodb://127.0.0.1:27017/api_rest_reactnotas';
+const uri =process.env.MONGODB_URL;
 
 mongoose.Promise = global.Promise;
 
@@ -38,8 +38,8 @@ app.use('/api', article_routes);
 mongoose.set('strictQuery', true);
 
 //conexion base de datos
-mongoose.connect('mongodb://127.0.0.1:27017/api_rest_reactnotas',
-{useNewUrlParser: true})
+mongoose
+.connect(uri,{useNewUrlParser: true})
 .then(()=>{
 console.log("Conexion realizada con exito");
 
