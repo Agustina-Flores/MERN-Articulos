@@ -38,7 +38,9 @@ app.use('/api', article_routes);
 mongoose.set('strictQuery', true);
 
 //conexion base de datos
-mongoose.connect('mongodb://127.0.0.1:27017/{api_rest_reactnotas}',{useNewUrlParser: true}).then(()=>{
+mongoose.connect('mongodb://127.0.0.1:27017/api_rest_reactnotas',
+{useNewUrlParser: true})
+.then(()=>{
 console.log("Conexion realizada con exito");
 
 app.listen(PORT, () =>{
